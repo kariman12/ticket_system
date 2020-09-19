@@ -11,5 +11,43 @@ body {
     padding-bottom: 30px;
 }
 
-.my-gray {color: gray}
-.my-orange {color: #fecb81}
+.my-gray {
+    color: gray;
+}
+
+.my-orange {
+    color: #fecb81;
+}
+
+.zaseki-container {
+    box-shadow: 0 3px 5px silver;
+    border-radius: 10px;
+    height: 300px;
+    width: 450px;
+    margin: 20px;
+    position: relative;
+}
+
+.zaseki-image {
+    filter: invert(81%) sepia(81%) saturate(633%) hue-rotate(359deg) brightness(106%) contrast(105%);
+    // background:linear-gradient(#F89174, #FFC778);
+    height: 300px;
+}
+
+.zaseki-container h1 {
+    position: absolute;
+    top: 40px;
+    left: 130px;
+    font-weight: bold; /*太字に*/
+    font-size: 7em;/*サイズ2倍*/
+    font-family :Quicksand, sans-serif;/*Google Font*/
+}
+
+.zaseki-container h2 {
+    position: absolute;
+    top: 150px;
+    left: 130px;
+    font-weight: bold; /*太字に*/
+    font-size: 6em;/*サイズ2倍*/
+    font-family :Quicksand, sans-serif;/*Google Font*/
+}
