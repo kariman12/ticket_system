@@ -24,11 +24,11 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-              <li><a href="/request">請求する</a></li>
-              <li><a href="/mypage">MyPage</a></li>
-              <li><a href="#/new_account">新規登録</a></li>
-              <li><a href="#/login">ログイン</a></li>
-              <li><a href="#/logout">ログアウト</a></li>
+              <li><%= link_to("請求する", "/tickets/request") %></li>
+              <li><%= link_to("MyPage", "/mypage") %></li>
+              <li><%= link_to("新規登録", "#/new_account") %></li>
+              <li><%= link_to("ログイン", "#/login") %></li>
+              <li><%= link_to("ログアウト", "#/logout") %></li>
               </ul>
           </div>
         </div>
