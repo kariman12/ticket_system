@@ -12,6 +12,14 @@ class TicketController < ApplicationController
     redirect_to("/mypage")
   end
 
+  def update
+    @ticket = Ticket.find_by(id: params[:id])
+    @ticket.status = "販売完了"
+    @ticket.sold_dates = Date.today
+    @ticket.save
+    redirect_to("/mypage")
+  end
+
   def destroy
     @ticket = Ticket.find_by(id: params[:id])
     @ticket.destroy

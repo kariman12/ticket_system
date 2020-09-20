@@ -33,7 +33,7 @@
                         <td><%= ticket.sold_dates %></td>
                         <td>
                             <% if ticket.status == "配布済" then %>
-                            <%= link_to("販売完了", "/tickets/#{ticket.id}/destroy", {method: "post", class: 'btn btn-primary'},) %>
+                            <%= link_to("販売完了", "/tickets/#{ticket.id}/update", {method: "post", class: 'btn btn-primary'},) %>
                             <% elsif ticket.status == "配布待ち" then %>
                             <%= link_to("請求取消", "/tickets/#{ticket.id}/destroy", {method: "post", class: 'btn btn-danger'},) %>
                             <% else %>
@@ -45,8 +45,5 @@
             </tbody>
           </table>
       </div>
-
-      <button type="submit" class="btn btn-primary">販売完了</button>
-
 </div>
 
