@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="page-header">
+        <h3>配布したチケットを確認する</h3>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>チケットID</th>
+                <th>チケット請求者</th>
+                <th>状態</th>
+                <th>請求日</th>
+                <th>配布日</th>
+                <th>販売完了日</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @tickets.zip(@users) do |ticket, user| %>
+                    <tr>
+                        <td><%= ticket.id %></td>
+                        <td><%= user %></td>
+                        <td><%= ticket.status %></td>
+                        <td><%= ticket.request_dates %></td>
+                        <td><%= ticket.get_dates %></td>
+                        <td><%= ticket.sold_dates %></td>
+                        <td>
+                            <% if ticket.status == "配布待ち" then %>
+                            <%= link_to("配布済", "/admin/#{ticket.id}/update", {method: "post", class: 'btn btn-primary'},) %>
+                            <% else %>
+                            <%= "Done!!!" %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+          </table>
+      </div>
+</div>
+

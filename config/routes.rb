@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/distribute'
   get  "/" => "home#about"
   get  "/top" => "home#top" 
   get  "tickets/request" => "ticket#req"
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
 
   get  "admin/distribute" => "admin#distribute"
   get  "admin/users" => "admin#users"
+  post "admin/:id/update" => "admin#update"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
