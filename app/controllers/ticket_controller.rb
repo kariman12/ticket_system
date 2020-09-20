@@ -31,6 +31,7 @@ class TicketController < ApplicationController
   end
 
   def mypage
-    @tickets = Ticket.all()
+    @tickets = Ticket.where(user_id: @current_user.id)
+    @sold_tickets = Ticket.where(user_id: @current_user.id, status: "販売完了")
   end
 end
