@@ -47,29 +47,29 @@
             <thead>
               <tr>
                 <th>チケットID</th>
-                <th>請求日</th>
                 <th>状態</th>
+                <th>請求日</th>
+                <th>配布日</th>
+                <th>販売完了日</th>
                 <th>操作</th>
               </tr>
             </thead>
             <tbody>
                 <% @tickets.each do |ticket| %>
                     <tr>
-                        <td>1</td>
-                        <td>2020/09/01</td>
-                        <td><%= ticket %></td>
+                        <td><%= ticket.id %></td>
+                        <td><%= ticket.status %></td>
+                        <td><%= ticket.request_dates %></td>
+                        <td><%= ticket.get_dates %></td>
+                        <td><%= ticket.sold_dates %></td>
                         <td><button type="submit" class="btn btn-danger">取消</button></td>
                     </tr>
                 <% end %>
-              <tr>
-                <td>3</td>
-                <td>2020/09/03</td>
-                <td>請求済?承認待ち?</td>
-                <td><button type="submit" class="btn btn-primary">配布済</button></td>
-              </tr>
             </tbody>
           </table>
       </div>
+
+      <button type="submit" class="btn btn-primary">配布済</button>
 
 </div>
 

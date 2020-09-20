@@ -4,6 +4,6 @@ class TicketController < ApplicationController
   end
 
   def mypage
-    @tickets = ["販売完了✨", "配布済🌟", "配布待ち🐰"]
+    @tickets = Ticket.all()
   end
 end
