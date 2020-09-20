@@ -23,6 +23,7 @@ class TicketController < ApplicationController
   def destroy
     @ticket = Ticket.find_by(id: params[:id])
     @ticket.destroy
+    flash[:notice] = "1枚のチケット請求を取り消しました"
     redirect_to("/mypage")
   end
 
