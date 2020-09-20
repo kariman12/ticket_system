@@ -12,4 +12,24 @@ class UsersController < ApplicationController
       render("/users/new")
     end
   end
+
+  def login_form
+    @user = User.new
+  end
+
+  def login
+    @user = User.find_by( name: params[:userName],
+                          part: params[:part],
+                          generation: params[:generation],
+                          password: params[:password])
+    if @user
+      flash[:notice] = "ログインしました"
+      redirect_to("/")
+    else
+      @error_message = "入力が正しくありません"
+      render("users/login_form")
+    end
+
+  end
+
 end

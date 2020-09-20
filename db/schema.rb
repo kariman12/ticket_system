@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_081026) do
+ActiveRecord::Schema.define(version: 2020_09_20_093013) do
 
   create_table "tickets", force: :cascade do |t|
     t.string "status"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_081026) do
     t.string "part"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password"
   end
 
 end

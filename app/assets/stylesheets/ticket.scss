@@ -3,9 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .ticket-number {
-    width: 300px;
+    width: 400px;
+    margin: auto;
 }
 
-.button {
-    margin: 20px;
+.ticket-number label {
+    margin: 20px 0px 0px 0px;
+}
+
+.ticket-number .button {
+    margin: 30px 20px 0px 150px;
 }
