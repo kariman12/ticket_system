@@ -9,7 +9,7 @@ class TicketController < ApplicationController
   def create
     ticket_num = params[:ticketNum].to_i
     for i in 1..ticket_num
-      @ticket = Ticket.new(status:"配布待ち", request_dates:Date.today, get_dates:"", sold_dates:"")
+      @ticket = Ticket.new(status:"配布待ち", request_dates:Date.today, get_dates:"", sold_dates:"", user_id:@current_user.id)
       @ticket.save
     end
     redirect_to("/mypage")
