@@ -5,7 +5,7 @@
     <div class="ticket-number">
         <label class="control-label">請求するチケット枚数</label>
         <%= form_tag("/tickets/create") do %>
-            <select class="form-control">
+            <select class="form-control" name="ticketNum">
                 <option value="1">1枚</option>
                 <option value="2">2枚</option>
                 <option value="3">3枚</option>
