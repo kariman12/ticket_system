@@ -53,13 +53,8 @@
 
     <div class="zaseki-container">
         <img class="zaseki-image" src="/zaseki.png">
-        <h1>74%</h1>
-        <h2>625人</h2>
-    </div>
-
-    <div>
-        <h2>74%</h2>
-        <h3>625人</h3>
+        <h1><%= "#{Float(@sold_tickets) / @all_tickets * 100} %" %></h1>
+        <h2><%= "#{Float(@sold_tickets) * 0.7} 人" %></h2>
     </div>
    
     <div class="page-header">
@@ -67,13 +62,15 @@
     </div>
 
     <div>
-        <h4>請求済み 74%</h4>
-        <h4>未請求　 26%</h4>
+        <h4>請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
+        <h4>未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
+        <%= pie_chart @data_request %>
     </div>
 
     <div>
-        <h4>配布済み 60%</h4>
-        <h4>未配布　 40%</h4>
+        <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
+        <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
+        <%= pie_chart @data_sold %>
     </div>
 
 

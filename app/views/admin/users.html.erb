@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="page-header">
+        <h3>ユーザの配布状況を確認する</h3>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ユーザ</th>
+                <th>期</th>
+                <th>パート</th>
+                <th>未配布チケット数</th>
+                <th>未販売チケット数</th>
+                <th>販売完了チケット数</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @users.each_with_index do |user, i| %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.generation %></td>
+                        <td><%= user.part %></td>
+                        <td><%= @request_tickets[i] %></td>
+                        <td><%= @distribution_tickets[i] %></td>
+                        <td><%= @sold_tickets[i] %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+          </table>
+      </div>
+</div>
+

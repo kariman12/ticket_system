@@ -1,14 +1,6 @@
 <div class="container">
     <div class="page-header">
-        <h3>MyPage</h3>
-    </div>
-
-    <h4>ノルマチケット　　　　：　10枚</h4>
-    <h4>請求したチケット　　　：　<%= @tickets.count %>枚</h4>
-    <h4>販売完了したチケット　：　<%= @sold_tickets.count %>枚</h4>
-
-    <div class="page-header">
-        <h3>チケット詳細情報</h3>
+        <h3>配布したチケットを確認する</h3>
     </div>
 
     <div>
@@ -16,6 +8,7 @@
             <thead>
               <tr>
                 <th>チケットID</th>
+                <th>チケット請求者</th>
                 <th>状態</th>
                 <th>請求日</th>
                 <th>配布日</th>
@@ -24,18 +17,17 @@
               </tr>
             </thead>
             <tbody>
-                <% @tickets.each do |ticket| %>
+                <% @tickets.zip(@users) do |ticket, user| %>
                     <tr>
                         <td><%= ticket.id %></td>
+                        <td><%= user %></td>
                         <td><%= ticket.status %></td>
                         <td><%= ticket.request_dates %></td>
                         <td><%= ticket.get_dates %></td>
                         <td><%= ticket.sold_dates %></td>
                         <td>
-                            <% if ticket.status == "配布済" then %>
-                            <%= link_to("販売完了", "/tickets/#{ticket.id}/update", {method: "post", class: 'btn btn-primary'},) %>
-                            <% elsif ticket.status == "配布待ち" then %>
-                            <%= link_to("請求取消", "/tickets/#{ticket.id}/destroy", {method: "post", class: 'btn btn-danger'},) %>
+                            <% if ticket.status == "配布待ち" then %>
+                            <%= link_to("配布済", "/admin/#{ticket.id}/update", {method: "post", class: 'btn btn-primary'},) %>
                             <% else %>
                             <%= "Done!!!" %>
                             <% end %>

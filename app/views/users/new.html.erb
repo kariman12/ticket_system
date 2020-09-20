@@ -1,0 +1,54 @@
+<% @user.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger">
+        <%= message %>
+    </div>
+<% end %>
+
+<div class="container">
+    <div class="page-header">
+        <h3>新規登録</h3>
+    </div>
+        <div class="signup-form">
+            <%= form_tag("/users/create") do %>
+                <label class="control-label">パート</label>
+                <select class="form-control" name="part">
+                    <optgroup label="弦楽セクション">
+                        <option value="vn">Violin</option>
+                        <option value="va">Viola</option>
+                        <option value="vc">Cello</option>
+                        <option value="cb">Contrabass</option>
+                    </optgroup>
+                    <optgroup label="木管セクション">
+                        <option value="fl">Flute/Piccolo</option>
+                        <option value="ob">Oboe</option>
+                        <option value="cl">Clarinet</option>
+                        <option value="fg">Fagott</option>
+                    </optgroup>
+                    <optgroup label="金管・打楽器セクション">
+                        <option value="trp">Trumpet</option>
+                        <option value="trb">Trombone</option>
+                        <option value="hr">Horn</option>
+                        <option value="tub">Tuba</option>
+                        <option value="perc">Percussion</option>
+                    </optgroup>
+                </select>
+                <label class="control-label">期</label>
+                <select class="form-control" name="generation">
+                    <option value="39">39期</option>
+                    <option value="40">40期</option>
+                    <option value="41">41期</option>
+                    <option value="42">42期</option>
+                    <option value="43">43期</option>
+                    <option value="44">44期</option>
+                    <option value="45">45期</option>
+                    <option value="46">46期</option>
+                    <option value="47">47期</option>
+                </select>
+                <label class="control-label">名前</label>
+                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="userName">
+                <label class="control-label">パスワード</label>
+                <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
+                <button type="submit" class="btn btn-primary button">登録する</button>
+            <% end %>
+        </div>
+</div>

@@ -12,7 +12,7 @@ body {
 }
 
 .jumbotron {
-    background-color: #f3e2e6 !important;
+    background-color: #e2d1ca !important;
 }
 
 .my-gray {
@@ -54,4 +54,14 @@ body {
     font-weight: bold; /*太字に*/
     font-size: 6em;/*サイズ2倍*/
     font-family :Quicksand, sans-serif;/*Google Font*/
+}
+
+.about-container {
+    width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-container p {
+   margin: 40px 0px 0px 0px;
 }
