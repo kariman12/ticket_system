@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get  "/" => "home#top" 
+  get  "/" => "home#about"
+  get  "/top" => "home#top" 
   get  "tickets/request" => "ticket#req"
   post "tickets/create" => "ticket#create"
   post "tickets/:id/update" => "ticket#update"

@@ -1,4 +1,7 @@
 class TicketController < ApplicationController
+
+  before_action :authenticate_user, {only: [:req, :create, :update, :destroy, :mypage]}
+
   def req
 
   end
