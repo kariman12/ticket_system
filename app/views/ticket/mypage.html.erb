@@ -31,7 +31,7 @@
                         <td><%= ticket.request_dates %></td>
                         <td><%= ticket.get_dates %></td>
                         <td><%= ticket.sold_dates %></td>
-                        <td><button type="submit" class="btn btn-danger">請求取消</button></td>
+                        <td><%= link_to("請求取消", "/tickets/#{ticket.id}/destroy", {method: "post", class: 'btn btn-danger'},) %></td>
                     </tr>
                 <% end %>
             </tbody>

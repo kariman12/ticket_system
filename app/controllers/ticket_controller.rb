@@ -12,6 +12,12 @@ class TicketController < ApplicationController
     redirect_to("/mypage")
   end
 
+  def destroy
+    @ticket = Ticket.find_by(id: params[:id])
+    @ticket.destroy
+    redirect_to("/mypage")
+  end
+
   def mypage
     @tickets = Ticket.all()
   end
