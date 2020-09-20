@@ -11,16 +11,20 @@ body {
     padding-bottom: 30px;
 }
 
+.jumbotron {
+    background-color: #f3e2e6 !important;
+}
+
 .my-gray {
     color: gray;
 }
 
 .my-orange {
-    color: #fecb81;
+    color: #E694A2;
 }
 
 .zaseki-container {
-    box-shadow: 0 3px 5px silver;
+    box-shadow: 0 3px 5px #896455;
     border-radius: 10px;
     height: 300px;
     width: 450px;
@@ -29,7 +33,7 @@ body {
 }
 
 .zaseki-image {
-    filter: invert(81%) sepia(81%) saturate(633%) hue-rotate(359deg) brightness(106%) contrast(105%);
+    filter: invert(70%) sepia(45%) saturate(400%) hue-rotate(305deg) brightness(106%) contrast(100%);
     // background:linear-gradient(#F89174, #FFC778);
     height: 300px;
 }
