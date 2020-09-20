@@ -31,7 +31,14 @@
                 <% if @current_user %>
                   <li><%= link_to("請求する", "/tickets/request") %></li>
                   <li><%= link_to("ログアウト", "/logout", {method: :post}) %></li>
-                  <li><%= link_to("#{@current_user.name} さん", "/mypage") %></li>
+                  <li>
+                    <%= link_to("/mypage") do %>
+                      <p>
+                        <i class="fas fa-user-circle fa-lg"></i>
+                        <%= @current_user.name %> さん
+                      </p>
+                    <% end %>
+                  </li>
                 <% else %>
                   <li><%= link_to("新規登録", "/signup") %></li>
                   <li><%= link_to("ログイン", "/login") %></li>

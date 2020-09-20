@@ -23,9 +23,8 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by( name: params[:userName],
                           part: params[:part],
-                          generation: params[:generation],
-                          password: params[:password])
-    if @user
+                          generation: params[:generation])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/top")
