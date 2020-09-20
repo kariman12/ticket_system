@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get "/" => "home#top" 
-  get "tickets/request" => "ticket#req"
+  get  "/" => "home#top" 
+  get  "tickets/request" => "ticket#req"
   post "tickets/create" => "ticket#create"
   post "tickets/:id/update" => "ticket#update"
   post "tickets/:id/destroy" => "ticket#destroy"
-  get "mypage" => "ticket#mypage"
+  get  "mypage" => "ticket#mypage"
+  get  "signup" => "users#new"
+  post "users/create" => "users#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
