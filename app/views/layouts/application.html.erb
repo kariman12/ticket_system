@@ -24,11 +24,15 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to("請求する", "/tickets/request") %></li>
-              <li><%= link_to("MyPage", "/mypage") %></li>
-              <li><%= link_to("新規登録", "/signup") %></li>
-              <li><%= link_to("ログイン", "/login") %></li>
-              <li><%= link_to("ログアウト", "#/logout") %></li>
+                <% if session[:user_id] %>
+                  <li><%= link_to("請求する", "/tickets/request") %></li>
+                  <li><%= link_to("ログアウト", "/logout", {method: :post}) %></li>
+                  <li><%= link_to("MyPage", "/mypage") %></li>
+                  <li>現在ログインしているユーザのid：<%= session[:user_id] %></li>
+                <% else %>
+                  <li><%= link_to("新規登録", "/signup") %></li>
+                  <li><%= link_to("ログイン", "/login") %></li>
+                <% end%>
               </ul>
           </div>
         </div>

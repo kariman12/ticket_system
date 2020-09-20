@@ -23,13 +23,19 @@ class UsersController < ApplicationController
                           generation: params[:generation],
                           password: params[:password])
     if @user
+      session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/")
     else
       @error_message = "入力が正しくありません"
       render("users/login_form")
     end
+  end
 
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/login")
   end
 
 end
