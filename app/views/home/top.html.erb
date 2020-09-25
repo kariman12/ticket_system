@@ -1,78 +1,82 @@
 <div class="container">
     <div class="jumbotron">
-        <h1>演奏会まであと35日</h1>
-        <p>スケジュール</p>
-        <ul>
-            <li>9/13(金) チケット請求開始</li>
-            <li>9/20(金) 配布開始</li>
-            <li>9/30(金) チケット配布終了</li>
-            <li>10/6(金) リハーサル</li>
-            <li>10/7(金) 本番</li>
-        </ul>
+        <div class= "jubotron-container">
+            <h1>演奏会まであと<span>35</span>日</h1>
+            <p><i class="fas fa-music"></i> スケジュール <i class="fas fa-music"></i></p>
+            <ul>
+                <li>9/13(木) チケット請求開始</li>
+                <li>9/20(木) 配布開始</li>
+                <li>9/30(月) チケット配布終了</li>
+                <li>10/6(金) リハーサル</li>
+                <li>10/7(土) 本番</li>
+            </ul>
+        </div>
     </div>
 
     <div class="page-header">
-        <h3>現在の予想入場者数</h3>
-    </div>
-
-    <div>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
+        <h3><i class="fas fa-users"></i> 現在の予想入場者数</h3>
     </div>
 
     <div class="zaseki-container">
-        <img class="zaseki-image" src="/zaseki.png">
-        <h1><%= "#{Float(@sold_tickets) / @all_tickets * 100} %" %></h1>
-        <h2><%= "#{Float(@sold_tickets) * 0.7} 人" %></h2>
+        <div>
+        <% (1..100).step(2).each do |i| %>
+            <% if i < 100 - (Integer(Float(@sold_tickets) / @all_tickets * 100)) then %>
+                <img class="empty-chair" src="/sitdown.png">
+            <% else %>
+                <img class="full-chair" src="/sitdown.png">
+            <% end %>
+            
+            <% if i%20 == 19 then %>
+                </div>
+                <div>
+            <% end %>
+        <% end %>
+        </div>
+        <div class="zaseki-percent">
+            <h1><%= "#{Float(@sold_tickets) / @all_tickets * 100}" %><span> %</span></h1>
+        </div>
+        <div class="zaseki-population">
+            <h1><%= "#{Float(@sold_tickets) * 0.7}" %><span> 人</span></h1>    <!-- 予想入場者数(チケット販売数*0.7(人))-->
+        </div>
     </div>
    
     <div class="page-header">
-        <h3>現在の請求・配布状況</h3>
+        <h3><i class="fas fa-check"></i> 請求済チケット</h3>
     </div>
+    <h4>　請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
+    <h4>　未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
+    <%= pie_chart @data_request, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
-    <div>
-        <h4>請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
-        <h4>未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
-        <%= pie_chart @data_request %>
+    <div class="page-header">
+        <h3><i class="fas fa-money-bill-wave"></i> 販売完了済チケット</h3>
     </div>
+    <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
+    <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
+    <%= pie_chart @data_sold, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
-    <div>
-        <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
-        <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
-        <%= pie_chart @data_sold %>
+    <div class="page-header">
+        <h3><i class="fas fa-chart-line"></i> 日別推移</h3>
     </div>
+    <%= line_chart @term_tickets.map { |kind|
+        {name: kind["name"], data: kind["tickets"].group(:request_dates).count}
+    },
+    colors: ["#E694A2", "#FDF3DA", "#e2d1ca"],
+    library: {animation: {easing: 'easeOutQuad'}},
+    discrete: true,
+    xtitle: "Dates", 
+    ytitle: "枚数"
+    %>
 
-
+    <div class="page-header">
+        <h3><i class="fas fa-award"></i> MVP</h3>
+    </div>
+    <h3>請求数ランキング</h3>
+    <% (0..2).each do |i| %>
+    <h4><%= "#{i+1}位　　#{@request_ranking[i]["user"]["name"]}さん　(#{@request_ranking[i]["user"]["generation"]}期・#{@request_ranking[i]["user"]["part"]})：#{@request_ranking[i]["count"]}枚"%></h4>
+    <% end %>
+    <h3>販売数ランキング</h3>
+    <% (0..2).each do |i| %>
+    <h4><%= "#{i+1}位　　#{@sold_ranking[i]["user"]["name"]}さん　(#{@sold_ranking[i]["user"]["generation"]}期・#{@sold_ranking[i]["user"]["part"]})：#{@sold_ranking[i]["count"]}枚"%></h4>
+    <% end %>
 </div>
 

@@ -15,50 +15,73 @@ body {
     background-color: #e2d1ca !important;
 }
 
-.my-gray {
-    color: gray;
+.jumbotron span {
+    font-size: 2em;
 }
 
-.my-orange {
-    color: #E694A2;
+.jubotron-container {
+    margin: auto;
+    width: 700px;
 }
 
 .zaseki-container {
-    box-shadow: 0 3px 5px #896455;
+    box-shadow: 0 3px 5px gray;
     border-radius: 10px;
-    height: 300px;
-    width: 450px;
-    margin: 20px;
+    height: 400px;
+    width: 700px;
+    margin: auto;
     position: relative;
+    padding: 25px 65px;
 }
 
-.zaseki-image {
+.full-chair {
     filter: invert(70%) sepia(45%) saturate(400%) hue-rotate(305deg) brightness(106%) contrast(100%);
-    // background:linear-gradient(#F89174, #FFC778);
-    height: 300px;
+    height: 70px;
+}
+
+.empty-chair {
+    filter: invert(50%) sepia(0%) saturate(11%) hue-rotate(143deg) brightness(101%) contrast(93%);
+    height: 70px;
+}
+
+.zaseki-percent {
+    width: 300px;
+    height: 150px;
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    background : rgba(255, 255, 255, 0.50); 
+    border-radius: 5px;
+    text-align: center;
+}
+
+.zaseki-population {
+    width: 300px;
+    height: 160px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    background : rgba(255, 255, 255, 0.50); 
+    border-radius: 5px;
+    text-align: center;
 }
 
 .zaseki-container h1 {
-    position: absolute;
-    top: 40px;
-    left: 130px;
-    font-weight: bold; /*太字に*/
-    font-size: 7em;/*サイズ2倍*/
-    font-family :Quicksand, sans-serif;/*Google Font*/
+    font-size: 9em;
 }
 
-.zaseki-container h2 {
-    position: absolute;
-    top: 150px;
-    left: 130px;
-    font-weight: bold; /*太字に*/
-    font-size: 6em;/*サイズ2倍*/
-    font-family :Quicksand, sans-serif;/*Google Font*/
+.zaseki-container span {
+    font-size: 0.4em;
+}
+
+.descriptions {
+    text-align: center;
+    margin: 40px;
 }
 
 .about-container {
     width: 700px;
-    margin: auto;
+    margin: 0px auto 45px auto;
     text-align: center;
 }
 
