@@ -42,8 +42,6 @@ class HomeController < ApplicationController
       @sold_ranking[count]["count"]= Ticket.where(status: "販売完了", user_id: i).count
       count += 1
     end
-
-
   end
 
   def about
