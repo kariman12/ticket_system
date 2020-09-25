@@ -59,7 +59,15 @@
     </div>
     <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
     <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
-    <%= bar_chart Shirt.group(:size).sum(:price) %>
+    <%= line_chart @term_tickets.map { |kind|
+        {name: kind["name"], data: kind["tickets"].group(:request_dates).count}
+    },
+    colors: ["#E694A2", "#FDF3DA", "#e2d1ca"],
+    library: {animation: {easing: 'easeOutQuad'}},
+    discrete: true,
+    xtitle: "Time", 
+    ytitle: "枚数"
+    %>
 
     <div class="page-header">
         <h3><i class="fas fa-award"></i> MVP</h3>
