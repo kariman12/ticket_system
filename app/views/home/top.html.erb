@@ -15,46 +15,27 @@
         <h3>現在の予想入場者数</h3>
     </div>
 
-    <div>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-        <i class="fas fa-chair fa-3x my-gray"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-    </div>
-    <div>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-        <i class="fas fa-chair fa-3x my-orange"></i>
-    </div>
-
     <div class="zaseki-container">
-        <img class="zaseki-image" src="/zaseki.png">
-        <h1><%= "#{Float(@sold_tickets) / @all_tickets * 100} %" %></h1>
-        <h2><%= "#{Float(@sold_tickets) * 0.7} 人" %></h2>
+        <div>
+        <% (1..100).step(2).each do |i| %>
+            <% if i < 100 - (Integer(Float(@sold_tickets) / @all_tickets * 100)) then %>
+                <img class="empty-chair" src="/sitdown.png">
+            <% else %>
+                <img class="full-chair" src="/sitdown.png">
+            <% end %>
+            
+            <% if i%20 == 19 then %>
+                </div>
+                <div>
+            <% end %>
+        <% end %>
+        </div>
+        <div class="zaseki-percent">
+            <h1><%= "#{Float(@sold_tickets) / @all_tickets * 100}" %><span> %</span></h1>
+        </div>
+        <div class="zaseki-population">
+            <h1><%= "#{Float(@sold_tickets) * 0.7}" %><span> 人</span></h1>    <!-- 予想入場者数(チケット販売数*0.7(人))-->
+        </div>
     </div>
    
     <div class="page-header">
