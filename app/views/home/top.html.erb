@@ -4,17 +4,17 @@
             <h1>演奏会まであと<span>35</span>日</h1>
             <p><i class="fas fa-music"></i> スケジュール <i class="fas fa-music"></i></p>
             <ul>
-                <li>9/13(金) チケット請求開始</li>
-                <li>9/20(金) 配布開始</li>
-                <li>9/30(金) チケット配布終了</li>
+                <li>9/13(木) チケット請求開始</li>
+                <li>9/20(木) 配布開始</li>
+                <li>9/30(月) チケット配布終了</li>
                 <li>10/6(金) リハーサル</li>
-                <li>10/7(金) 本番</li>
+                <li>10/7(土) 本番</li>
             </ul>
         </div>
     </div>
 
     <div class="page-header">
-        <h3>現在の予想入場者数</h3>
+        <h3><i class="fas fa-users"></i> 現在の予想入場者数</h3>
     </div>
 
     <div class="zaseki-container">
@@ -41,21 +41,32 @@
     </div>
    
     <div class="page-header">
-        <h3>現在の請求・配布状況</h3>
+        <h3><i class="fas fa-check"></i> 請求済チケット</h3>
     </div>
+    <h4>　請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
+    <h4>　未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
+    <%= pie_chart @data_request, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
-    <div>
-        <h4>請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
-        <h4>未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
-        <%= pie_chart @data_request %>
+    <div class="page-header">
+        <h3><i class="fas fa-money-bill-wave"></i> 販売完了済チケット</h3>
     </div>
+    <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
+    <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
+    <%= pie_chart @data_sold, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
-    <div>
-        <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
-        <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
-        <%= pie_chart @data_sold %>
+    <div class="page-header">
+        <h3><i class="fas fa-chart-line"></i> 日別推移</h3>
     </div>
+    <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
+    <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
+    <%= bar_chart Shirt.group(:size).sum(:price) %>
 
+    <div class="page-header">
+        <h3><i class="fas fa-award"></i> MVP</h3>
+    </div>
+    <h4>1位 Aさん</h4>
+    <h4>2位 Bさん</h4>
+    <h4>3位 Cさん</h4>
 
 </div>
 
