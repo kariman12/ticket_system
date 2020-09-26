@@ -25,23 +25,23 @@ class HomeController < ApplicationController
     @term_tickets[1]["tickets"] = Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了"))
     @term_tickets[2]["tickets"] = Ticket.where(status: "販売完了")
     # 個人ごとのチケット請求数
-    # request_ranking_user_id = Ticket.where(status: "配布待ち").or(Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了"))).group(:user_id).order('count(id) desc').limit(3).pluck(:user_id)
-    # count = 0
-    # @request_ranking = [{}, {}, {}]
-    # for i in request_ranking_user_id
-    #   @request_ranking[count]["user"]= User.find_by(id: i)
-    #   @request_ranking[count]["count"]= Ticket.where(status: "配布待ち", user_id: i).or(Ticket.where(status: "配布済", user_id: i).or(Ticket.where(status: "販売完了", user_id: i))).count
-    #   count += 1
-    # end
-    # # 個人ごとのチケット販売数
-    # sold_ranking_user_id = Ticket.where(status: "販売完了").group(:user_id).order('count(id) desc').limit(3).pluck(:user_id)
-    # count = 0
-    # @sold_ranking = [{}, {}, {}]
-    # for i in sold_ranking_user_id
-    #   @sold_ranking[count]["user"]= User.find_by(id: i)
-    #   @sold_ranking[count]["count"]= Ticket.where(status: "販売完了", user_id: i).count
-    #   count += 1
-    # end
+    request_ranking_user_id = Ticket.where(status: "配布待ち").or(Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了"))).group(:user_id).order('count(id) desc').limit(3).pluck(:user_id)
+    count = 0
+    @request_ranking = [{}, {}, {}]
+    for i in request_ranking_user_id
+      @request_ranking[count]["user"]= User.find_by(id: i)
+      @request_ranking[count]["count"]= Ticket.where(status: "配布待ち", user_id: i).or(Ticket.where(status: "配布済", user_id: i).or(Ticket.where(status: "販売完了", user_id: i))).count
+      count += 1
+    end
+    # 個人ごとのチケット販売数
+    sold_ranking_user_id = Ticket.where(status: "販売完了").group(:user_id).order('count(id) desc').limit(3).pluck(:user_id)
+    count = 0
+    @sold_ranking = [{}, {}, {}]
+    for i in sold_ranking_user_id
+      @sold_ranking[count]["user"]= User.find_by(id: i)
+      @sold_ranking[count]["count"]= Ticket.where(status: "販売完了", user_id: i).count
+      count += 1
+    end
   end
 
   def about
