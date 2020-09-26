@@ -33,7 +33,7 @@
         <% end %>
         </div>
         <div class="zaseki-percent">
-            <h1><%= "#{(Float(@sold_tickets) / @all_tickets * 100.round(1))}" %><span> %</span></h1>
+            <h1><%= "#{(Float(@sold_tickets) / @all_tickets * 100).round(1)}" %><span> %</span></h1>
         </div>
         <div class="zaseki-population">
             <h1><%= "#{(Float(@sold_tickets) * 0.7).round(1)}" %><span> 人</span></h1>    <!-- 予想入場者数(チケット販売数*0.7(人))-->
