@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(
-    id: 1,
     name: "admin", 
     part: "vn", 
     generation: "43",
@@ -18,7 +17,6 @@ User.create(
     updated_at: "2020-09-20 02:33:34")
     
 User.create(
-    id: 2,
     name: "中野茉里香", 
     part: "vn", 
     generation: "43",
@@ -29,7 +27,6 @@ User.create(
     updated_at: "2020-09-20 02:33:34")
 
 User.create(
-    id: 3,
     name: "古川ありさ", 
     part: "fl", 
     generation: "47",
@@ -40,7 +37,6 @@ User.create(
     updated_at: "2020-09-20 02:33:34")
 
 User.create(
-    id: 4,
     name: "富山太郎", 
     part: "tp", 
     generation: "39",
@@ -51,7 +47,6 @@ User.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 1,
     user_id: "2", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -61,7 +56,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 2,
     user_id: "2", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -71,7 +65,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 3,
     user_id: "2", 
     status: "配布済",
     request_dates:Date.today-3, 
@@ -81,7 +74,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 4,
     user_id: "2", 
     status: "配布待ち",
     request_dates:Date.today, 
@@ -91,7 +83,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 5,
     user_id: "3", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -101,7 +92,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 6,
     user_id: "3", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -111,7 +101,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 7,
     user_id: "3", 
     status: "配布済",
     request_dates:Date.today-3, 
@@ -121,7 +110,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 8,
     user_id: "3", 
     status: "配布待ち",
     request_dates:Date.today, 
@@ -131,7 +119,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 9,
     user_id: "4", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -141,7 +128,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 10,
     user_id: "4", 
     status: "販売完了",
     request_dates:Date.today-3, 
@@ -151,7 +137,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 11,
     user_id: "4", 
     status: "配布済",
     request_dates:Date.today-3, 
@@ -161,7 +146,6 @@ Ticket.create(
     updated_at: "2020-09-20 02:33:34")
 
 Ticket.create(
-    id: 12,
     user_id: "4", 
     status: "配布待ち",
     request_dates:Date.today, 
