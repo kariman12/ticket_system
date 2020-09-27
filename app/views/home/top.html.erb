@@ -43,15 +43,15 @@
     <div class="page-header">
         <h3><i class="fas fa-check"></i> 請求済チケット</h3>
     </div>
-    <h4>　請求済み <%= "#{Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100} %" %></h4>
-    <h4>　未請求　 <%= "#{100 - (Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100)} %" %></h4>
+    <h4>　請求済み <%= "#{(Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100).round(1)} %" %></h4>
+    <h4>　未請求　 <%= "#{100 - ((Float(@request_tickets + @get_tickets + @sold_tickets) / 100.0 * 100).round(1))} %" %></h4>
     <%= pie_chart @data_request, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
     <div class="page-header">
         <h3><i class="fas fa-money-bill-wave"></i> 販売完了済チケット</h3>
     </div>
-    <h4>販売完了済み <%= "#{Float(@sold_tickets) / 100.0 * 100} %" %></h4>
-    <h4>未販売　　　 <%= "#{100 - (Float(@sold_tickets) / 100.0 * 100)} %" %></h4>
+    <h4>販売完了済み <%= "#{(Float(@sold_tickets) / 100.0 * 100).round(1)} %" %></h4>
+    <h4>未販売　　　 <%= "#{100 - ((Float(@sold_tickets) / 100.0 * 100).round(1))} %" %></h4>
     <%= pie_chart @data_sold, donut: true, colors: ["#E694A2", " #e2d1ca"], suffix: "%", library: {animation: {easing: 'easeOutQuad'}} %>
 
     <div class="page-header">
