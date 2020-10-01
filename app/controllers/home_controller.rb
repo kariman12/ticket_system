@@ -17,6 +17,7 @@ class HomeController < ApplicationController
     # 販売状況円グラフ
     @data_sold = {'販売完了済' => @sold_tickets, '未販売' => @all_tickets - @sold_tickets}
     # chart用
+    # @term_tickets = [{}]
     @term_tickets = [{}, {}, {}]
     @term_tickets[0]["name"] = "請求済チケット数"
     @term_tickets[1]["name"] = "配布済チケット数"
@@ -24,6 +25,9 @@ class HomeController < ApplicationController
     @term_tickets[0]["tickets"] = Ticket.where(status: "配布待ち").or(Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了")))
     @term_tickets[1]["tickets"] = Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了"))
     @term_tickets[2]["tickets"] = Ticket.where(status: "販売完了")
+    @term_tickets[0]["dates"] = "request"
+    @term_tickets[1]["dates"] = "get"
+    @term_tickets[2]["dates"] = "sold"
     # 個人ごとのチケット請求数
     request_ranking_user_id = Ticket.where(status: "配布待ち").or(Ticket.where(status: "配布済").or(Ticket.where(status: "販売完了"))).group(:user_id).order('count(id) desc').limit(3).pluck(:user_id)
     count = 0
