@@ -58,7 +58,7 @@
         <h3><i class="fas fa-chart-line"></i> 日別推移</h3>
     </div>
     <%= line_chart @term_tickets.map { |kind|
-        {name: kind["name"], data: kind["tickets"].group(:request_dates).order('request_dates').count}
+        {name: kind["name"], data: kind["tickets"].group("#{kind["dates"]}_dates").order("#{kind["dates"]}_dates").count}
     },
     colors: ["#E694A2", "#FDF3DA", "#e2d1ca"],
     library: {animation: {easing: 'easeOutQuad'}},
